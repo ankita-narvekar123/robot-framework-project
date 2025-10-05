@@ -1,0 +1,38 @@
+Step 1: Install Robot Framework from command prompt using below command
+`pip install robotframework`
+
+2.Install java
+
+3.Download Visual Studio Code 
+
+4.Run the below command to install the packages
+`pip install -r requirements.txt`
+
+5.Start the web application which is to be tested with the below command:
+`python demoapp/server.py`
+
+6. Download and add geckodriver in Python -> scripts folder
+
+7. In Vscode download the below extensions: 
+a. Robot framework language server
+b. Robot Framework Formatter
+c. Robocorp (helps to run testcases directly from vscode)
+
+8. Install Selenium library using the below command:
+`pip install --upgrade robotframework-seleniumlibrary`
+
+9. To run the testcases:
+Option a: Run directly from Vscode by right-clicking on testcase file and selecting Robot Framework -> Run tests
+
+Option b: Open Command Prompt and run the below command:
+`python -m robot login_tests`
+
+Option c:Run using Jenkins:
+i. Download Jenkins.war file from Jenkins website
+ii. Run the command java -jar "C:\locationtojenkinsfiledownloaded\jenkins.war"
+iii. Open http://localhost:8080
+iv. Setup the robotframework project and run it from there
+
+
+
+

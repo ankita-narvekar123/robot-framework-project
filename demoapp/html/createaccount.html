@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Account</title>
+  <link href="demo.css" media="all" rel="stylesheet" type="text/css">
+  <script>
+
+    function createAccount(username, password) {
+        if (username && password) {
+            alert("Account created successfully for " + username + ". You can now log in.");
+            window.location = "index.html";
+        } else {
+            alert("Please fill in all fields.");
+        }
+    }
+
+    function validateForm() {
+      const firstName = document.getElementById("firstname_field").value.trim();
+      const lastName = document.getElementById("lastname_field").value.trim();
+      const userName = document.getElementById("username_field").value.trim();
+      const mobile = document.getElementById("mobile_field").value.trim();
+      const email = document.getElementById("email_field").value.trim();
+      const password = document.getElementById("password_field").value.trim();
+
+      // Email validation (standard pattern)
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+      // Australian mobile number validation
+      // Valid formats:
+      //  - 04XXXXXXXX (10 digits)
+      //  - +614XXXXXXXX (international format)
+      const ausMobilePattern = /^(?:\+?61|0)4\d{8}$/;
+
+      if (!firstName || !lastName || !userName || !mobile || !email || !password) {
+        alert("Please fill in all fields.");
+        return false;
+      }
+
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+
+      if (!ausMobilePattern.test(mobile)) {
+        alert("Please enter a valid Australian mobile number.");
+        return false;
+      }
+
+      // All validations passed
+      createAccount(firstName + " " + lastName, password);
+      return false; // Prevent page reload
+    }
+  </script>
+</head>
+<body>
+<div id='container'>
+  <h1>Create Account</h1>
+  <p>Enter the below details to create an account.</p>
+  <form name="create_account_form" onsubmit="validateForm(); return false;">
+    <table>
+      <tr>
+        <td><label for="firstname_field">First Name:</label></td>
+        <td><input id="firstname_field" size="30" type="text"></td>
+      </tr>
+      <tr>
+        <td><label for="lastname_field">Last Name:</label></td>
+        <td><input id="lastname_field" size="30" type="text"></td>
+      </tr>
+      <tr>
+        <td><label for="username_field">Username:</label></td>
+        <td><input id="username_field" size="30" type="text"></td>
+      </tr>
+      <tr>
+        <td><label for="mobile_field">Mobile Number:</label></td>
+        <td><input id="mobile_field" size="30" type="text"></td>
+      </tr>
+      <tr>
+        <td><label for="email_field">Email ID:</label></td>
+        <td><input id="email_field" size="30" type="text"></td>
+      </tr>
+      <tr>
+        <td><label for="password_field">Password:</label></td>
+        <td><input id="password_field" size="30" type="password"></td>
+      </tr>
+      <tr>
+        <div class="button-group">
+          <td><input id="createaccount_button" type="submit" value="Create Account"/></td>
+          <td><input id="backToLogin_button" type="button" value="Back to Login" onclick="window.location='index.html'"/></td>
+        </div>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>
